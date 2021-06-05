@@ -1,0 +1,23 @@
+.submit_button {
+    background-color: #36b9a3;
+    height: 10px;
+    color: white; 
+    display: block;
+    line-height: 0px;
+    font-size: 16px;
+    margin: 0;
+    position: absolute;
+    left: 40%;
+    padding: 15px 15px;
+}
+
+  body {
+    background-color: #fffebf;
+  }
+
+  .MovieBar {
+    position: absolute;
+    top:130px;
+    right:460px;
+    width: 500px;
+  }
