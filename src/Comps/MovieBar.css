@@ -1,7 +1,7 @@
 .submit_button {
-    background-color: #36b9a3;
+    background-color: #37dbce;
     height: 10px;
-    color: white; 
+    color: rgb(10, 1, 1); 
     display: block;
     line-height: 0px;
     font-size: 16px;
@@ -12,7 +12,7 @@
 }
 
   body {
-    background-color: #fffebf;
+    background-color: #fcfafa;
   }
 
   .MovieBar {
@@ -21,3 +21,11 @@
     right:460px;
     width: 500px;
   }
+
+textarea:focus, input:focus {
+    color:#020000;
+ }
+
+input, select, textarea{
+  color:#030202;
+ }
