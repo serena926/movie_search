@@ -4,21 +4,21 @@ import { Card } from 'react-bootstrap';
 function Movies(props) {
     return(
         <div>
-           
-            {props.movies ? props.movies.map(movie => {
+            {props.movies ? props.movies.map(movie => { /*going through movies and creating cards and creating a hover area with 
+            movie details on each card*/
                 return(
                 <Card style={{ width: '30rem' }}>
-                    <Card.Img variant="top" src = {movie.Poster} />
+                    <Card.Img variant= "top" src = {movie.Poster} />
                     <Card.Body>
-                        <Card.Title>{movie.Title}</Card.Title>
-                        <Card.Text>
-                            {movie.Year}
-                       </Card.Text>
-                       <p>
-                            <a href = " # " > 
-                            Click to see movie info 
-                            </a>
-                       </p>
+                      <div id = "parent"> Hover here for more details! 
+                      <div id = "hover_area">
+                           <p>Title: {movie.Title} </p> 
+                           <p> Released: {movie.Year} </p>
+                           <p>Movie ID: {movie.imdbID} </p>
+                          <p> Link to Poster: {movie.Poster} </p> 
+                          Genre : {movie.Genre} 
+                      </div>
+                    </div>
                     </Card.Body>
                 </Card>
                 )

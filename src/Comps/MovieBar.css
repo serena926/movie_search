@@ -29,3 +29,14 @@ textarea:focus, input:focus {
 input, select, textarea{
   color:#030202;
  }
+
+ #parent #hover_area {
+  display:none;
+}
+
+#parent:hover #hover_area {
+  display:block;
+  background-color: rgb(236, 235, 170);
+  width:450px;
+  word-wrap: break-word;
+}
