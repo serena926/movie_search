@@ -12,7 +12,8 @@
 }
 
   body {
-    background-color: #fcfafa;
+  background-image: url("http://www.pptgrounds.com/wp-content/uploads/2013/11/Movie-Film-Strips-Backgrounds-1000x750.jpg");
+  background-size: cover;
   }
 
   .MovieBar {
@@ -20,14 +21,15 @@
     top:130px;
     right:460px;
     width: 500px;
+    color:#050000;
   }
 
 textarea:focus, input:focus {
-    color:#020000;
+    color:#030000;
  }
 
 input, select, textarea{
-  color:#030202;
+  color:#050000;
  }
 
  #parent #hover_area {
@@ -39,4 +41,8 @@ input, select, textarea{
   background-color: rgb(236, 235, 170);
   width:450px;
   word-wrap: break-word;
+}
+
+::placeholder { 
+  color : rgb(0, 0, 0);
 }
