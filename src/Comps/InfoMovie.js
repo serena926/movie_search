@@ -16,7 +16,6 @@ function Movies(props) {
                            <p> Released: {movie.Year} </p>
                            <p>Movie ID: {movie.imdbID} </p>
                           <p> Link to Poster: {movie.Poster} </p> 
-                          Genre : {movie.Genre} 
                       </div>
                     </div>
                     </Card.Body>
