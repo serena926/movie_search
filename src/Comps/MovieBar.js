@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './MovieBar.css';
-import Movies from './InfoMovie';
+import InfoMovie from './InfoMovie';
+import AllMovies from './AllMovies';
 
 function MovieBar() {
 let [submittedSearch, setSearch] = useState("");
@@ -12,6 +13,7 @@ let [counter, setCounter] = useState(0);
 let [check, setCheck] = useState(0);
 let [validCheck, setValidCheck] = useState(false);
 let[length, setLength] = useState(0);
+let [movie_spec, setMovie_spec] = useState("");
 const e = new Event('build');
 
 function afterButtonClick(e) { //getting info from the API 
@@ -24,12 +26,12 @@ function afterButtonClick(e) { //getting info from the API
            setValidCheck(true);
        }
        setList(getBack.Search); //setting listMovies to array of 10 elements returned
-       console.log(getBack.Search);
        if(getBack.Search != undefined) {
        setLength(getBack.Search.length);
        } else {
            setLength(0);
        }
+
     }
     retrieve();
     setCounter(0);
@@ -56,12 +58,30 @@ const resetPage = () => { //resetting page number to 1, once a new search has be
     set_current_page(1);
     setCheck(0);
     setValidCheck(false);
-
+    setMovie_spec(null);
 }
 
 if(counter > 0) { 
     afterButtonClick(e); //in order to get 10 movies per page when next or previous are clicked
 } 
+
+const open = (passed_in) => {
+    let temp = "";
+    let num = 0;
+    listMovies.forEach(holder => {
+        if(passed_in == holder.imdbID) {
+            temp = holder;
+            num++;
+        }
+    })
+    setMovie_spec(temp);  
+    setShowMovies(false);
+  }
+
+  const returnToMoviePage = () => {
+    setMovie_spec(null);
+    setShowMovies(true);
+  }
 
 return (
         <div className = "MovieBar">
@@ -76,10 +96,11 @@ return (
                <button onClick ={resetPage} > Submit </button> {/*resetting page number once submit is pressed again */}
             </form>}
             {validCheck ? "No such movie found! (Please check spelling or delete any unnecessary spaces)" : ""} {/*Response returned false (input movie not found*/}
-            {showMovies && !validCheck ? <Movies movies={listMovies}> </Movies> : ""}
-            {!validCheck && check && (current_page != 1) ? 
+            {showMovies && !validCheck ? <AllMovies movies={listMovies} open={open} check = {check}> </AllMovies> : ""}
+            {!showMovies && movie_spec != null ? <InfoMovie returnToMoviePage={returnToMoviePage} movie_spec = {movie_spec} check = {check}> </InfoMovie> : ""}
+            {!validCheck && check && (current_page != 1) && movie_spec == null? 
             <button onClick = {previousPage} > Previous Page </button> : ""} {/*No previous button if first page of movies*/}
-            {!validCheck && check && (length == 10) ? <button onClick={nextPage} > Next Page </button> : ""}
+            {!validCheck && check && (length == 10) && movie_spec == null ? <button onClick={nextPage} > Next Page </button> : ""}
         </div>
         )
 }
